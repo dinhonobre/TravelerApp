@@ -1,136 +1,119 @@
-/* App principal */
-.App {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: linear-gradient(135deg, #f8f9fa, #e3f2fd); /* Gradiente de fundo */
-  min-height: 100vh;
-  padding: 20px;
-}
-
-/* Logo do App */
-.App-logo {
-  height: 20vmin;
-  pointer-events: none;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.App-logo:hover {
-  transform: scale(1.1); /* Efeito de zoom na logo ao passar o mouse */
-}
-
-/* Cabeçalho */
-.App-header {
-  background: linear-gradient(135deg, #3e93ad, #61dafb); /* Gradiente suave no cabeçalho */
-  color: white;
-  padding: 40px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-size: calc(12px + 2vmin);
-  margin-bottom: 40px;
-  width: 100%;
-  max-width: 960px;
-  transition: transform 0.3s ease;
-}
-
-/* Efeito hover no cabeçalho */
-.App-header:hover {
-  transform: translateY(-5px); /* Levanta o cabeçalho ao passar o mouse */
-}
-
-/* Links */
-.App-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Efeito hover nos links */
-.App-link:hover {
-  color: #21a1f1;
-  transform: scale(1.1);
-}
-
-/* Gradiente no corpo */
-.App-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 960px;
-}
-
-/* src/App.css ou src/components/Rating.css */
-
-.rating-container {
-  background: linear-gradient(135deg, #3e93ad, #61dafb); /* Gradiente suave */
-  padding: 15px;
-  border-radius: 8px;
-  margin: 10px auto; /* Alinha no centro com margem superior e inferior */
-  width: 80%; /* Tamanho igual aos outros quadros */
-  max-width: 500px; /* Garantir que o quadro não ultrapasse 500px de largura */
-  box-sizing: border-box; /* Inclui o padding na largura total */
-}
-
-
-.rating-container h3 {
-  font-size: 18px;
-}
-
-.rating-container select {
-  padding: 8px;
-  font-size: 16px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.rating-container button {
-  padding: 10px 15px;
-  background-color: #3e93ad;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.rating-container button:hover {
-  background-color: #61dafb;
-}
-
-.rating-display {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-
-/* Estilo para as listas e filtros */
-ul {
-  list-style: none;
+/* Reset Básico */
+body, html {
+  margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Estilo Geral */
+.App {
+  position: relative;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  background-color: #f8f9fa; /* Cor base de fundo */
 }
 
-li {
-  margin-right: 20px;
+/* Cabeçalho com o menu hambúrguer */
+.hamburger-menu {
+  background-color: #008cba; /* Cor de fundo azul */
+  color: white; /* Cor do texto no cabeçalho */
+  padding: 15px 20px; /* Espaçamento interno */
+  position: relative; /* Necessário para posicionar o menu */
+  display: flex; /* Organiza os itens em linha */
+  align-items: center; /* Alinha verticalmente */
+  justify-content: space-between; /* Espaça os itens */
 }
 
-li a {
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: color 0.3s ease, transform 0.3s ease;
+/* Botão do menu hambúrguer */
+.menu-btn {
+  font-size: 1.5rem; /* Tamanho maior para o ícone */
+  background: none; /* Remove o fundo padrão */
+  border: none; /* Remove bordas */
+  color: white; /* Cor do ícone */
+  cursor: pointer; /* Muda o cursor ao passar por cima */
 }
 
-li a:hover {
-  color: #61dafb;
-  transform: scale(1.1);
+/* Conteúdo do menu (exibido ao abrir) */
+.menu-content {
+  position: absolute; /* Permite sobreposição */
+  top: 100%; /* Exibe logo abaixo do cabeçalho */
+  left: 0;
+  right: 0;
+  background-color: white; /* Fundo branco */
+  color: #333; /* Cor do texto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  padding: 10px 0; /* Espaçamento interno */
+  z-index: 1000; /* Coloca o menu acima de outros elementos */
+}
+
+/* Itens do menu */
+.menu-item {
+  display: block; /* Cada item ocupa uma linha */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: left; /* Alinha o texto à esquerda */
+  border-bottom: 1px solid #ddd; /* Linha de separação entre itens */
+  color: #008cba; /* Cor azul para os itens */
+  text-decoration: none; /* Remove sublinhado */
+  cursor: pointer; /* Muda o cursor ao passar por cima */
+}
+
+/* Último item do menu sem borda */
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+/* Itens do menu ao passar o mouse */
+.menu-item:hover {
+  background-color: #f4f4f4; /* Muda a cor de fundo ao passar o mouse */
+}
+
+/* Imagem de Fundo */
+.background {
+  flex: 1;
+  background-image: url('https://image.freepik.com/vetores-gratis/mapa-da-cidade-abstrato-com-alfinetes-coloridos_95169-2610.jpg'); /* Troque pela sua imagem */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Sugestões de Lugares */
+.suggestions {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.attraction-card {
+  min-width: 200px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.attraction-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.attraction-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.rating-display p {
+  font-size: 14px;
+  color: #555;
 }
